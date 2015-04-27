@@ -1,10 +1,11 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " 文件管理
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 " 缩进线对对其
 Plugin 'Yggdroot/indentLine'
 " 自动补全插件
@@ -21,12 +22,18 @@ Plugin 'JulesWang/css.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mxw/vim-jsx'
-
+" Code state bar
+Plugin 'bling/vim-airline'
 " Code colon 
 Plugin 'junegunn/seoul256.vim'
+Plugin 'chriskempson/base16-vim'
+Plugin 'tomasr/molokai'
+
 " 自动补全
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
+" 高亮
+Plugin 'scrooloose/syntastic'
 call vundle#end()
 filetype plugin indent on
 
@@ -60,6 +67,7 @@ set ignorecase
 set fileencodings=utf-8,gbk
 set termencoding=utf-8
 set encoding=utf-8
+set guifont=Source\ Code\ Pro\ 12
 ""检索时高亮显示匹配项
 set hlsearch
 "增量式搜索
@@ -83,13 +91,17 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd vimenter * NERDTree
 
+
 " ======================= 代码颜色配置方案 =========================
 " Light color scheme
-let g:seoul256_background = 239
+let g:seoul256_background = 236
 colo seoul256
+set background=dark
+" colorscheme base16-default
+" let base16colorspace=256
+" let g:molokai_original = 1
 
 " Switch
-set background=dark
 " set background=light
 
 " ============================== react jsx config ====================
