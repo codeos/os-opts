@@ -21,7 +21,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'JulesWang/css.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'mxw/vim-jsx'
 " Code state bar
 Plugin 'bling/vim-airline'
 " Code colon 
@@ -103,10 +102,6 @@ set background=dark
 
 " Switch
 " set background=light
-
-" ============================== react jsx config ====================
-let g:jsx_ext_required = 0
-let g:jsx_pragma_required = 1
 
 " ==============================  tag config ========================
 nmap <F8> :TagbarToggle<CR>
