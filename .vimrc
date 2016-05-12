@@ -9,8 +9,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " 缩进线对对其
 Plugin 'Yggdroot/indentLine'
 " 自动补全插件
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/neocomplcache.vim'
+Plugin 'valloric/youcompleteme'
 " 代码注释
 Plugin 'scrooloose/nerdcommenter'
 " 多光标同时输入
@@ -23,29 +22,35 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'cakebaker/scss-syntax.vim'
 " Code state bar
 Plugin 'bling/vim-airline'
-" Code colon 
-Plugin 'junegunn/seoul256.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'tomasr/molokai'
+" Code colonr
+
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+
 
 " 自动补全
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
-" 高亮
+" 语法检测
 Plugin 'scrooloose/syntastic'
+" search ctrlp
+Plugin 'kien/ctrlp.vim'
+
+Plugin 'mileszs/ack.vim'
+
+
 call vundle#end()
 filetype plugin indent on
 
 "语法高亮
-syn on
+syntax enable
 ""自动缩进
 set autoindent
 "总是现实状态行
 set laststatus=2
 "以下三个配置配合使用，设置 tab 和缩进空格数
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 "为光标所在行加下划线
 set cursorline
 ""光标移到最后一个字母后
@@ -58,8 +63,6 @@ set autoread
 set ruler
 ""显示匹配括号
 set showmatch
-"代码折叠
-" set foldmethod=indent
 ""检索时忽略大小写
 set ignorecase
 "使用 utf-8 或 gbk 打开文件
@@ -71,6 +74,11 @@ set guifont=Source\ Code\ Pro\ 12
 set hlsearch
 "增量式搜索
 set incsearch
+" 延迟渲染
+set lazyredraw
+" 开启颜色
+set t_Co=256
+
 " ================== neocomplcache.vim config =======================
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
@@ -92,16 +100,23 @@ autocmd vimenter * NERDTree
 
 
 " ======================= 代码颜色配置方案 =========================
-" Light color scheme
-let g:seoul256_background = 236
-colo seoul256
-set background=dark
-" colorscheme base16-default
-" let base16colorspace=256
-" let g:molokai_original = 1
 
-" Switch
-" set background=light
+set background=dark
+color dracula
+
+
+" ================================ ctrl p config ===================
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|node_modules|bower_components)$'
+
 
 " ==============================  tag config ========================
 nmap <F8> :TagbarToggle<CR>
+
+
+" ============================== js语法检测======================
+autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
