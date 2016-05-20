@@ -20,12 +20,11 @@ Plugin 'majutsushi/tagbar'
 Plugin 'JulesWang/css.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'leafgarland/typescript-vim'
 " Code state bar
 Plugin 'bling/vim-airline'
 " Code colonr
-
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-
 
 " 自动补全
 Plugin 'othree/html5.vim'
@@ -36,6 +35,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'mileszs/ack.vim'
+" 括号自动补全
+Plugin 'raimondi/delimitmate'
 
 
 call vundle#end()
@@ -120,3 +121,15 @@ nmap <F8> :TagbarToggle<CR>
 
 " ============================== js语法检测======================
 autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
+
+" ======================= typescript config ==================
+let g:typescript_indent_disable = 1
+autocmd BufNewFile,BufRead *.ts,*.tsx setlocal filetype=typescript
+
+
+" ============================ 自动补全符号=====================
+let g:delimitMate_expand_cr = 1
+
+" ================ valloric/youcompleteme config =================
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
