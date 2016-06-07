@@ -24,7 +24,9 @@ Plugin 'leafgarland/typescript-vim'
 " Code state bar
 Plugin 'bling/vim-airline'
 " Code colonr
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+"Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
 
 " 自动补全
 Plugin 'othree/html5.vim'
@@ -37,6 +39,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 " 括号自动补全
 Plugin 'raimondi/delimitmate'
+" markdown
+Plugin 'tpope/vim-markdown'
+" 代码判断补全
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 
 call vundle#end()
@@ -101,10 +108,7 @@ autocmd vimenter * NERDTree
 
 
 " ======================= 代码颜色配置方案 =========================
-
-set background=dark
-color dracula
-
+colorscheme zenburn
 
 " ================================ ctrl p config ===================
 
@@ -133,3 +137,11 @@ let g:delimitMate_expand_cr = 1
 " ================ valloric/youcompleteme config =================
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" =======================代码片段配置 =========================
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>""
+
+" ===================== markdown config =============
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
